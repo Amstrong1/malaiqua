@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\Equipment;
 use App\Models\GalleryRoom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
-use App\Models\Equipment;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class RoomController extends Controller
@@ -110,6 +110,14 @@ class RoomController extends Controller
         $room->number = $request->number;
 
         if ($room->save()) {
+            // Supprime tous les équipements de la chambre
+            $room->equipment()->detach();
+
+            foreach ($request->equipment as $value) {
+                $equipment = Equipment::find($value);
+                $room->equipment()->attach($equipment->id);
+            }
+
             Alert::toast('Les informations ont été modifiées', 'success');
             return redirect('room');
         };

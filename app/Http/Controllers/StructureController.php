@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Structure;
+use App\Models\GalleryHotel;
+use Illuminate\Http\Request;
+use App\Mail\NewStructureMail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StoreStructureRequest;
 use App\Http\Requests\UpdateStructureRequest;
-use App\Mail\NewStructureMail;
-use Illuminate\Support\Facades\Mail;
 
 class StructureController extends Controller
 {
@@ -100,14 +103,21 @@ class StructureController extends Controller
         $structure->city = $request->city;
         $structure->address = $request->address;
         $structure->slug = $request->slug;
-        $structure->created_at = $request->created_at;
+        $structure->description = $request->description;
+        $structure->latitude = $request->latitude;
+        $structure->longitude = $request->longitude;
+
         if (isset($path)) {
             $structure->logo = $path;
         }
 
         if ($structure->save()) {
             Alert::toast('Les informations ont été modifiées', 'success');
-            return redirect('structure');
+            if (Auth::user()->role == 'superadmin') {
+                return redirect('structure');
+            } else {
+                return redirect()->back();
+            }
         };
     }
 
@@ -120,6 +130,33 @@ class StructureController extends Controller
             $structure = $structure->delete();
             Alert::success('Opération effectuée', 'Suppression éffectué');
             return redirect('structure');
+        } catch (\Exception $e) {
+            Alert::error('Erreur', 'Element introuvable');
+            return redirect()->back();
+        }
+    }
+
+    public function addImage(Request $request)
+    {
+        $i = 0;
+        foreach ($request->photo as $photo) {
+            $photoHotel = new GalleryHotel();
+            $fileName = time() . ++$i . '.' . $photo->extension();
+            $photo->move(public_path('photos'), $fileName);
+            $photoHotel->structure_id = $request->structure;
+            $photoHotel->path = $fileName;
+            $photoHotel->save();
+        }
+        return redirect()->back();
+    }
+
+    public function destroyImage($gallery)
+    {
+        $gallery = GalleryHotel::find($gallery);
+        try {
+            $gallery = $gallery->delete();
+            Alert::success('Opération effectuée', 'Suppression éffectué');
+            return redirect()->back();
         } catch (\Exception $e) {
             Alert::error('Erreur', 'Element introuvable');
             return redirect()->back();

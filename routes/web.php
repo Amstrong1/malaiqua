@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FAQController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\StructureController;
+use App\Http\Controllers\TestimonyController;
 use App\Http\Controllers\ReservationController;
 
 Route::middleware('auth')->group(function () {
@@ -18,9 +20,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('room', RoomController::class);
     Route::resource('reservation', ReservationController::class);
     Route::resource('condition', ConditionController::class);
+    Route::resource('faq', FAQController::class);
+    Route::resource('testimony', TestimonyController::class);
 
     Route::post('/gallery-room', [RoomController::class, 'addImage'])->name('gallery.room.store');
     Route::delete('/gallery-room/{image}', [RoomController::class, 'destroyImage'])->name('gallery.room.destroy');
+
+    Route::post('/gallery-structure', [StructureController::class, 'addImage'])->name('gallery.structure.store');
+    Route::delete('/gallery-structure/{image}', [StructureController::class, 'destroyImage'])->name('gallery.structure.destroy');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

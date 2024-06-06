@@ -11,12 +11,22 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 
     <!-- Scripts -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
 
     <style>
+        html,
+        body {
+            font-family: "Roboto", sans-serif;
+        }
+
         .select2 {
             display: block;
             width: 100%;
@@ -62,32 +72,23 @@
             border-width: .5px;
             border-style: solid;
             border-color: #E5E7EB;
-        }       
+        }
     </style>
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased" @if (Request::routeIs('profile.edit')) onload="geolocal()" @endif>
     <div class="min-h-screen bg-gray-100">
         <div class="bg-white">
             @include('layouts.navigation')
             @include('layouts.navigation-top')
         </div>
 
-        <!-- Page Heading -->
-        {{-- @if (isset($header))
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endif --}}
-
         <!-- Page Content -->
-        <main>
+        <main class="pb-16">
             {{ $slot }}
         </main>
 
-        <footer class="fixed bottom-0 w-full">
+        <footer class="fixed bottom-0 w-full bg-white">
             @include('layouts.navigation-bottom')
         </footer>
     </div>
@@ -111,11 +112,39 @@
     <script src="{{ asset('assets/vendor/ckeditor5/build/ckeditor.js') }}"></script>
 
     <script>
-        ClassicEditor
+        function geolocal() {
+            // Check if geolocation is supported by the browser
+            if ("geolocation" in navigator) {
+                // Prompt user for permission to access their location
+                navigator.geolocation.getCurrentPosition(
+                    // Success callback function
+                    (position) => {
+                        // Get the user's latitude and longitude coordinates
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+
+                        document.getElementById('latitude').value = lat;
+                        document.getElementById('longitude').value = lng;
+                    },
+                    // Error callback function
+                    (error) => {
+                        // Handle errors, e.g. user denied location sharing permissions
+                        console.error("Error getting user location:", error);
+                    }
+                );
+            } else {
+                // Geolocation is not supported by the browser
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        if (document.getElementById('editor')) {
+            ClassicEditor
             .create(document.querySelector('#editor'))
             .catch(error => {
                 console.error(error);
             });
+        }
     </script>
 </body>
 

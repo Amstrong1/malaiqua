@@ -16,7 +16,7 @@ class EquipmentController extends Controller
     public function index()
     {
         $structure = Auth::user()->structure;
-        $equipments = $structure->equipments()->get();
+        $equipments = $structure->equipment()->get();
         return view('app.equipment.index', [
             'equipments' => $equipments,
             'my_actions' => $this->equipment_actions(),

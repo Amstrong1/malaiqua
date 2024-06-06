@@ -4,7 +4,7 @@
             <div class="bg-white overflow-hidden shadow-lg sm:rounded">
                 <div class="p-6 text-gray-900">
                     <h1 class="text-lg font-medium text-gray-900">Modifier les informations de {{ $room->name }}</h1>
-                    <x-forms.update :item="$room" :fields="$my_fields" type="admin.room" />
+                    <x-forms.update :item="$room" :fields="$my_fields" type="room" />
 
                     <div class="mt-8">
                         <div class="flex justify-between">

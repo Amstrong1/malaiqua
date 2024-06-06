@@ -1,168 +1,92 @@
 <template>
     <header
-        class="bg-[url('https://www.cogedim.com/sites/default/files/images/Annecy--Osmose---Custhome-FD-optimise.jpg')] bg-cover bg-[50%] bg-no-repeat h-96 lg:min-h-screen">
+        class="bg-[url('https://www.cogedim.com/sites/default/files/images/Annecy--Osmose---Custhome-FD-optimise.jpg')] bg-cover bg-[50%] bg-no-repeat h-screen min-h-[500px]">
         <!-- Navigation bar -->
-        <nav class="relative flex w-full items-center justify-between py-2 lg:flex-wrap lg:justify-start lg:py-4"
-            data-twe-navbar-ref>
-            <div class="flex w-full flex-wrap items-center justify-between px-3">
-                <img class="w-28" src="logos/logo.png" alt="malaiqua.com">
-                <div class="flex items-center">
-                    <!-- Hamburger menu button -->
-                    <button
-                        class="border-0 bg-transparent px-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 motion-reduce:transition-none lg:hidden"
-                        type="button" data-twe-collapse-init data-twe-target="#navbarSupportedContentX"
-                        aria-controls="navbarSupportedContentX" aria-expanded="false" aria-label="Toggle navigation">
-                        <!-- Hamburger menu icon -->
-                        <span class="[&>svg]:h-7 [&>svg]:w-7 [&>svg]:stroke-black/50">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                            </svg>
-                        </span>
-                    </button>
-                </div>
-
-                <!-- Navigation links -->
-                <div class="!visible hidden grow basis-[100%] items-center text-center lg:!flex lg:basis-auto lg:text-left"
-                    id="navbarSupportedContentX" data-twe-collapse-item>
-                    <ul class="me-auto flex flex-col lg:flex-row justify-end w-full" data-twe-navbar-nav-ref>
-                        <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-                            <a class="block text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none lg:px-2"
-                                href="#!" data-twe-nav-link-ref data-twe-ripple-init
-                                data-twe-ripple-color="light">Trouver un hôtel</a>
-                        </li>
-                        <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-                            <a class="block text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none lg:px-2"
-                                href="#!" data-twe-nav-link-ref data-twe-ripple-init data-twe-ripple-color="light">Nos
-                                Partenaires</a>
-                        </li>
-                        <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-                            <a class="block text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none lg:px-2"
-                                href="#!" data-twe-nav-link-ref data-twe-ripple-init
-                                data-twe-ripple-color="light">FAQ</a>
-                        </li>
-                        <li class="mb-2 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-                            <a class="block text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none lg:px-2"
-                                href="#!" data-twe-nav-link-ref data-twe-ripple-init
-                                data-twe-ripple-color="light">Contact</a>
-                        </li>
-                        <li class="mb-2 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-                            <a class="block text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none lg:px-2"
-                                href="#!" data-twe-nav-link-ref data-twe-ripple-init
-                                data-twe-ripple-color="light">Rappel Assistance Support</a>
-                        </li>
-                        <li class="mb-2 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-                            <a class="block text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none lg:px-2"
-                                href="#!" data-twe-nav-link-ref data-twe-ripple-init data-twe-ripple-color="light">Se
-                                connecter</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <Nav />
 
         <!-- Hero section with background image, heading, subheading and button -->
         <div class="relative h-[400px] overflow-hidden">
-            <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed">
+            <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed z-40">
                 <div class="flex h-full items-center justify-center">
                     <div class="px-6 text-center md:px-12">
                         <h1 class="mb-6 text-3xl font-semibold text-white">Trouver un hôtel</h1>
-                        <div class="flex gap-2">
-                            <div>
-                                <input
-                                    class="placeholder:text-black text-xs opacity-80 h-8 w-48 p-2 outline-0 text-black"
-                                    type="text" name="" placeholder="Destination">
-                            </div>
-                            <div>
-                                <input
-                                    class="placeholder:text-black text-xs opacity-80 h-8 w-48 p-2 outline-0 text-black"
-                                    type="date" name="" placeholder="Début du séjour">
-                            </div>
-                            <div>
-                                <input
-                                    class="placeholder:text-black text-xs opacity-80 h-8 w-48 p-2 outline-0 text-black"
-                                    type="date" name="" placeholder="Fin de séjour">
-                            </div>
-                            <div>
-                                <input
-                                    class="placeholder:text-black text-xs opacity-80 h-8 w-48 p-2 outline-0 text-black"
-                                    type="number" name="" placeholder="Personne par chambre">
-                            </div>
-                        </div>
 
-                        <router-link to="/search">
-                            <button type="button"
-                                class="mt-4 inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-300 hover:text-neutral-200 focus:border-neutral-300 focus:text-neutral-200 focus:outline-none focus:ring-0 active:border-neutral-300 active:text-neutral-200"
-                                data-twe-ripple-init data-twe-ripple-color="light">
-                                Rechercher
-                            </button>
-                        </router-link>
+                        <form @submit.prevent="submitForm()">
+                            <div class="lg:flex gap-4 md:grid grid-cols-2 bg-white opacity-80 rounded-lg p-4 items-center">
+                                <div class="my-2">
+                                    <input
+                                        class="placeholder:text-indigo-900 text-xs h-8 w-48 p-2 outline-0 text-indigo-900 border-b-2"
+                                        type="text" placeholder="Destination" v-model="destination" required>
+                                </div>
+                                <div class="my-2">
+                                    <input
+                                        class="placeholder:text-indigo-900 text-xs h-8 w-48 p-2 outline-0 text-indigo-900 border-b-2"
+                                        type="date" placeholder="Début du séjour" v-model="checkInDate" required>
+                                </div>
+                                <div class="my-2">
+                                    <input
+                                        class="placeholder:text-indigo-900 text-xs h-8 w-48 p-2 outline-0 text-indigo-900 border-b-2"
+                                        type="date" placeholder="Fin de séjour" v-model="checkOutDate" required>
+                                </div>
+                                <div class="my-2">
+                                    <input
+                                        class="placeholder:text-indigo-900 text-xs h-8 w-48 p-2 outline-0 text-indigo-900 border-b-2"
+                                        type="number" placeholder="Nombre de chambre" v-model="rooms" required>
+                                </div>
+                                <div class="my-2">
+                                    <input
+                                        class="placeholder:text-indigo-900 text-xs h-8 w-48 p-2 outline-0 text-indigo-900 border-b-2"
+                                        type="number" placeholder="Personne par chambre" v-model="guests" required>
+                                </div>
+
+                                <button type="submit"
+                                    class="rounded-full bg-indigo-900 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-300 hover:text-neutral-200 focus:border-neutral-300 focus:text-neutral-200 focus:outline-none focus:ring-0 active:border-neutral-300 active:text-neutral-200"
+                                    data-twe-ripple-init data-twe-ripple-color="light">
+                                    Rechercher
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <div class="bg-purple-800 text-white rounded-lg flex sm:flex-col lg:flex-row tems-center w-2/3 mx-auto relative -top-14">
+        <div class="flex items-center justify-between bg-slate-200 p-4 lg:rounded-l-lg rounded-t-lg lg:rounded-tr-none">
+            <span class="font-bold text-black">Découvrez</span>
+            <img class="w-20 mx-4" src="logos/avis-client.png" alt="avis-client">
+        </div>
+        <div class="flex-1 text-xs p-4">
+            <p class="">Notre logiciel vous permet de créer vos enquêtes facilement,</p>
+            <p class="">Ainsi que de les envoyer par SMS ou par Mail,</p>
+            <p class="">Et de partager les résultats, et de les exploiter !</p>
+            <p class="">Soyez en contact avec des professionnels qui interviennent dans le même domaine que vous.
+            </p>
+        </div>
+        <div class="p-4 flex items-center justify-center">
+            <a href="https://avis-client.online/" class="bg-purple-900 text-white font-bold py-2 px-4 rounded-lg">
+                Je découvre
+            </a>
+        </div>
+    </div>
+
     <!-- city list -->
-    <section class="m-8">
+    <section class="m-8" v-if="cities.length != 0">
         <h2 class="text-xl font-semibold text-purple-700 mb-4 text-center">Des hôtels partout au Bénin</h2>
         <div class="flex flex-wrap">
-            <div class="w-1/4">
-                <span class="inline-block text-xs">Auvergne-Rhône-Alpes</span>
+            <div class="w-1/4" v-for="city in cities">
+                <span class="inline-block font-semibold">{{ city.city }}</span>
                 <span
-                    class="ml-4 inline-block whitespace-nowrap rounded-full bg-danger-500 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-semibold leading-none text-white">196</span>
-            </div>
-            <div class="w-1/4">
-                <span class="inline-block text-xs">Centre-Val de Loire</span>
-                <span
-                    class="ml-4 inline-block whitespace-nowrap rounded-full bg-danger-500 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-semibold leading-none text-white">43</span>
-            </div>
-            <div class="w-1/4">
-                <span class="inline-block text-xs">Grand Est</span>
-                <span
-                    class="ml-4 inline-block whitespace-nowrap rounded-full bg-danger-500 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-semibold leading-none text-white">44</span>
-            </div>
-            <div class="w-1/4">
-                <span class="inline-block text-xs">Hauts-de-France</span>
-                <span
-                    class="ml-4 inline-block whitespace-nowrap rounded-full bg-danger-500 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-semibold leading-none text-white">77</span>
-            </div>
-            <div class="w-1/4">
-                <span class="inline-block text-xs">Île-de-France</span>
-                <span
-                    class="ml-4 inline-block whitespace-nowrap rounded-full bg-danger-500 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-semibold leading-none text-white">279</span>
-            </div>
-            <div class="w-1/4">
-                <span class="inline-block text-xs">Normandie</span>
-                <span
-                    class="ml-4 inline-block whitespace-nowrap rounded-full bg-danger-500 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-semibold leading-none text-white">97</span>
-            </div>
-            <div class="w-1/4">
-                <span class="inline-block text-xs">Nouvelle-Aquitaine</span>
-                <span
-                    class="ml-4 inline-block whitespace-nowrap rounded-full bg-danger-500 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-semibold leading-none text-white">28</span>
-            </div>
-            <div class="w-1/4">
-                <span class="inline-block text-xs">Occitanie</span>
-                <span
-                    class="ml-4 inline-block whitespace-nowrap rounded-full bg-danger-500 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-semibold leading-none text-white">142</span>
-            </div>
-            <div class="w-1/4">
-                <span class="inline-block text-xs">Pays de la Loire</span>
-                <span
-                    class="ml-4 inline-block whitespace-nowrap rounded-full bg-danger-500 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-semibold leading-none text-white">41</span>
-            </div>
-            <div class="w-1/4">
-                <span class="inline-block text-xs">Provence-Alpes-Côte d'Azur</span>
-                <span
-                    class="ml-4 inline-block whitespace-nowrap rounded-full bg-danger-500 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-semibold leading-none text-white">219</span>
+                    class="ml-4 inline-block whitespace-nowrap rounded-full bg-danger-500 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-semibold leading-none text-white">
+                    {{ city.count }}
+                </span>
             </div>
         </div>
     </section>
 
     <!-- a la une -->
-    <section class="m-8 p-8 relative overflow-hidden">
+    <section class="m-8 p-8 relative overflow-hidden" v-if="cards.length != 0">
         <h2 class="text-xl font-semibold text-purple-700 mb-4 text-center">Hôtels à la Une</h2>
         <button class="absolute left-0 top-1/2 bg-black opacity-50 p-4 text-white border-0 cursor-pointer z-10"
             @click="prev">❮</button>
@@ -173,8 +97,8 @@
                     <img class="rounded-t-lg" :src="card.img" alt="" />
                 </a>
                 <div class="p-6 text-surface">
-                    <h5 class="mb-2 text-xl font-medium leading-tight">{{ card.title }}</h5>
-                    <p class="mb-4 text-base">{{ card.content }}</p>
+                    <h5 class="mb-2 text-xl font-medium leading-tight">{{ card.name }}</h5>
+                    <p class="mb-4 text-base">{{ card.description }}</p>
                     <button type="button"
                         class="inline-block rounded bg-blue-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2"
                         data-twe-ripple-init data-twe-ripple-color="light">
@@ -188,7 +112,7 @@
     </section>
 
     <!-- testimonies -->
-    <section class="py-16">
+    <section class="py-16" v-if="testimonies.length != 0">
         <div class="container mx-auto px-4 relative">
             <h2 class="text-xl font-semibold text-purple-700 mb-4 text-center">Des clients satisfaits</h2>
             <button class="absolute left-0 top-1/2 bg-black opacity-50 p-4 text-white border-0 cursor-pointer z-10"
@@ -228,21 +152,21 @@
         </div>
     </section>
 
-    <section class="py-16">
+    <section class="py-16" v-if="faqs.length != 0">
         <div class="container mx-auto px-4">
-            <h2 class="text-xl font-semibold text-purple-700 mb-4 text-center">Toutes nos réponses <br><span
-                    class="text-pink-600">à
-                    vos questions</span></h2>
+            <h2 class="text-xl font-semibold text-purple-700 mb-4 text-center">
+                Toutes nos réponses <span class="text-pink-600">à
+                    vos questions</span>
+            </h2>
             <div class="flex items-center mb-8 justify-center">
                 <input type="text" placeholder="Mot-clé ou question" class="border rounded-full py-2 px-4 mr-2">
                 <button class="bg-pink-600 text-white rounded-full py-2 px-6">Rechercher</button>
-                <img src="https://via.placeholder.com/100" alt="Famille" class="rounded-full ml-4">
             </div>
-            <div>
-                <Accordion />
+            <div class="md:w-1/2 mx-auto">
+                <Accordion :items=faqs />
             </div>
             <div class="mt-4 py-4 text-center">
-                <a href="#" class="text-purple-600 underline">Voir toutes les FAQ</a>
+                <a href="/faqs" class="text-purple-600 underline">Voir toutes les FAQ</a>
             </div>
         </div>
     </section>
@@ -255,39 +179,24 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
+
 import Accordion from '../components/Accordion.vue'
 import Footer from '../components/Footer.vue'
+import router from '../../router/index.js'
+import Nav from '../components/Nav.vue'
 
-const structures = ref([])
+const destination = ref('')
+const checkInDate = ref('')
+const checkOutDate = ref('')
+const testimonies = ref([])
+const rooms = ref('')
+const guests = ref('')
+const cities = ref([])
+const faqs = ref([])
+const cards = ref([])
+
 const cardIndex = ref(0)
 const testimonyIndex = ref(0)
-const cards = ref([
-    { img: 'https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg', title: 'Card title 1', content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.' },
-    { img: 'https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg', title: 'Card title 2', content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.' },
-    { img: 'https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg', title: 'Card title 3', content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.' },
-    { img: 'https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg', title: 'Card title 4', content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.' },
-    { img: 'https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg', title: 'Card title 5', content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.' },
-    { img: 'https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg', title: 'Card title 6', content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.' },
-])
-
-const testimonies = ref([
-    { rate: "2", title: '« Pstructuresrestation de qualité »', content: 'Respect des délais, prestations de qualité, interlocuteurs attentifs et qualifiés. Rien à dire. Bravo.', author: 'SébastienL, propriétaire à Paris', date: '23 juin 2023' },
-    { rate: "3", title: '« Compétence, rigueur et disponibilité »', content: 'Je recommande pour la qualité des prestations et le suivi du projet. Les interlocuteurs sont compétents et réactifs.', author: 'GaetanS, propriétaire à Marigny-Saint-Marcel - Savoie-Léman', date: '29 juillet 2023' },
-    { rate: "4", title: '« Satisfait »', content: 'Tout s\'est bien passé avec Cogedim. Bonne communication et appartement conforme à ce qui était attendu.', author: 'CharlesZ, propriétaire à Montigny-le-Bretonneux - Île-de-France', date: '12 juillet 2023' },
-    { rate: "5", title: '« Rapide et efficace »', content: 'Rien à redire, tout était parfait : le sérieux, la courtoisie, la comprétence. Bravo à tous, continuez ainsi. Merci.', author: 'FrédéricR, propriétaire à Droussard - Savoie-Léman', date: '2 août 2023' },
-])
-
-const getStructures = async () => {
-    await axios.get('api/structure').then((result) => {
-        structures.value = result.data.structures
-        console.log('structures', result.data)
-    }).catch((err) => {
-    });
-}
-
-onMounted(async () => {
-    await getStructures()
-})
 
 function next() {
     if (cardIndex.value < cards.value.length - 3) {
@@ -312,4 +221,31 @@ function prevTestimony() {
         testimonyIndex.value -= 2
     }
 }
+
+function submitForm() {
+    router.push({
+        name: 'Results',
+        query: {
+            destination: destination.value,
+            checkInDate: checkInDate.value,
+            checkOutDate: checkOutDate.value,
+            guests: guests.value,
+            rooms: rooms.value,
+        }
+    });
+}
+
+const getCities = async () => {
+    await axios.get('api/app').then((result) => {
+        faqs.value = result.data.faqs
+        cities.value = result.data.cities
+        cards.value = result.data.structures
+        testimonies.value = result.data.testimonies
+    }).catch((err) => {
+    });
+}
+
+onMounted(async () => {
+    await getCities()
+})
 </script>
