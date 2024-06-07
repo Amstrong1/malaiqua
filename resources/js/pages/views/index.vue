@@ -12,7 +12,8 @@
                         <h1 class="mb-6 text-3xl font-semibold text-white">Trouver un hôtel</h1>
 
                         <form @submit.prevent="submitForm()">
-                            <div class="lg:flex gap-4 md:grid grid-cols-2 bg-white opacity-80 rounded-lg p-4 items-center">
+                            <div
+                                class="lg:flex gap-4 md:grid grid-cols-2 bg-white opacity-80 rounded-lg p-4 items-center">
                                 <div class="my-2">
                                     <input
                                         class="placeholder:text-indigo-900 text-xs h-8 w-48 p-2 outline-0 text-indigo-900 border-b-2"
@@ -52,8 +53,9 @@
         </div>
     </header>
 
-    <div class="bg-purple-800 text-white rounded-lg flex sm:flex-col lg:flex-row tems-center w-2/3 mx-auto relative -top-14">
-        <div class="flex items-center justify-between bg-slate-200 p-4 lg:rounded-l-lg rounded-t-lg lg:rounded-tr-none">
+    <div
+        class="bg-purple-800 text-white rounded-lg flex sm:flex-col lg:flex-row items-center w-2/3 mx-auto relative -top-28 lg:-top-14">
+        <div class="flex  w-full lg:w-auto items-center justify-between bg-slate-200 p-4 lg:rounded-l-lg rounded-t-lg lg:rounded-tr-none">
             <span class="font-bold text-black">Découvrez</span>
             <img class="w-20 mx-4" src="logos/avis-client.png" alt="avis-client">
         </div>
@@ -93,17 +95,15 @@
         <div class="flex flex-nowrap transition ease-in-out delay-500 gap-3">
             <div v-for="(card, index) in cards.slice(cardIndex, cardIndex + 3)" :key="index"
                 class="rounded-lg bg-white shadow-secondary-1 flex-initial w-1/3 transition ease-in-out delay-500">
-                <a href="#!">
-                    <img class="rounded-t-lg" :src="card.img" alt="" />
-                </a>
+                <img class="rounded-t-lg" :src="`photos/${card.images[0].path}`" :alt="`${card.images[0].path}`" />
                 <div class="p-6 text-surface">
                     <h5 class="mb-2 text-xl font-medium leading-tight">{{ card.name }}</h5>
                     <p class="mb-4 text-base">{{ card.description }}</p>
-                    <button type="button"
-                        class="inline-block rounded bg-blue-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2"
+                    <router-link :to="{ name: 'room-detail', params: { id: card.id } }"
+                        class="inline-block rounded bg-blue-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 w-full text-center"
                         data-twe-ripple-init data-twe-ripple-color="light">
-                        Voir
-                    </button>
+                        Voir Plus
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -247,5 +247,6 @@ const getCities = async () => {
 
 onMounted(async () => {
     await getCities()
+    console.log(cards)
 })
 </script>

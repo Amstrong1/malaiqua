@@ -22,11 +22,8 @@ class AppController extends Controller
 
 
         $structures = Structure::where('description', '!=', null)
-            ->whereHas('galleryHotels')
-            ->with(['galleryHotels' => function ($query) {
-                $query->select('id', 'path')
-                    ->take(1);
-            }])
+            ->whereHas('images')
+            ->with('images')
             ->limit(6)
             ->get();
 

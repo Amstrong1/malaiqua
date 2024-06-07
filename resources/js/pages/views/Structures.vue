@@ -126,7 +126,7 @@
                                 :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
                                 <div v-for="(image, index) in structure.images" :key="index"
                                     class="w-full h-full flex-shrink-0 overflow-hidden">
-                                    <img :src="`/photos/${image.path}`" alt="${image}"
+                                    <img :src="`/photos/${image.path}`" :alt="`${image.path}`"
                                         class="w-full h-full object-cover object-center rounded-lg" />
                                 </div>
                             </div>

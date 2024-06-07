@@ -51,7 +51,7 @@ class Structure extends Model
         return $this->hasMany(FAQ::class);
     }
 
-    public function images() : HasMany {
+    public function images() {
         return $this->hasMany(GalleryHotel::class);
     }
 
