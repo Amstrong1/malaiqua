@@ -41,7 +41,7 @@
         </div>
 
         <div
-            class="flex justify-between pt-4 pb-1 mb-2 text-xs font-semibold sticky top-0 bg-white border-b border-gray-400">
+            class="flex justify-between pt-4 pb-1 mb-2 text-xs font-semibold sticky top-0 bg-white border-b border-gray-400 z-20">
             <div>
                 <a href="#presentation" class="mx-2 pb-5 active:border-b-2 active:border-blue-500 active:text-blue-500">
                     Présentation
@@ -106,7 +106,6 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <!-- Appartement Standard -->
                 <div class="bg-white rounded border" v-for="room in structure.rooms">
                     <!-- <img src="path/to/standard.jpg" alt="Appartement Standard" class="w-full h-48 object-cover rounded"> -->
                     <div class="relative w-full h-48">
@@ -158,7 +157,51 @@
                             <span class="text-red-600 text-xl font-bold">{{ room.price }} € </span>
                             <span class="text-xs font-semibold">/ tarif journalier</span>
                         </div>
-                        <button class="my-2 w-full bg-blue-500 text-white px-4 py-2 rounded">Réserver</button>
+                        <button class="my-2 w-full bg-blue-500 text-white px-4 py-2 rounded"
+                            @click.prevent="togglePaymentModal()">Réserver</button>
+                    </div>
+                    <div class="w-full h-full fixed inset-0 flex items-center justify-center z-50" v-if="isPaymentOpen">
+                        <div class="bg-gray-700 opacity-80 absolute w-full h-full z-40"></div>
+                        <div class="bg-white rounded-lg p-6 w-2/3 mx-auto top-1/2">
+                            <button class="mb-1 mr-3 bg-red-500 text-white px-4 py-2 rounded"
+                                @click.prevent="togglePaymentModal()">X</button>
+                            <div class="flex gap-4">
+                                <!-- Card 1 -->
+                                <div class="border rounded-lg p-6 mx-auto w-1/2">
+                                    <h2 class="text-lg font-bold mb-4">Payez au moment de votre séjour</h2>
+                                    <ul class="list-disc list-inside mb-4">
+                                        <li>Les informations de la carte de crédit ne sont pas nécessaires pour
+                                            compléter
+                                            cette réservation</li>
+                                        <li>Ne payez rien avant de partir</li>
+                                        <li>Payez directement sur place dans la devise préférée de l'hébergement (XOF)
+                                        </li>
+                                    </ul>
+                                    <div class="flex items-center justify-between mb-4">
+                                        <span class="text-sm text-gray-500">Hotels.com® Rewards</span>
+                                        <span class="text-lg font-semibold">{{ room.price }} €</span>
+                                    </div>
+                                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Payez au moment
+                                        de
+                                        votre séjour</button>
+                                </div>
+                                <!-- Card 2 -->
+                                <div class="border rounded-lg p-6 mx-auto w-1/2">
+                                    <h2 class="text-lg font-bold mb-4">Payez le total maintenant</h2>
+                                    <ul class="list-disc list-inside mb-4">
+                                        <li>Votre paiement sera traité dans votre devise locale</li>
+                                        <li>Plusieurs moyens de payer : carte de crédit/débit</li>
+                                        <li>Vous pouvez utiliser un bon promo Hotels.com valide</li>
+                                    </ul>
+                                    <div class="flex items-center justify-between mb-4">
+                                        <span class="text-sm text-gray-500">Hotels.com® Rewards</span>
+                                        <span class="text-lg font-semibold">{{ room.price }} €</span>
+                                    </div>
+                                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Payer
+                                        maintenant</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -197,6 +240,7 @@ import Footer from '../components/Footer.vue'
 import Nav from '../components/Nav.vue'
 
 const isRoomPersonFilterOpen = ref(false)
+const isPaymentOpen = ref(false)
 const route = useRoute();
 let req = route.params.id
 
@@ -220,6 +264,10 @@ const prev = (obj) => {
 
 const toggleRoomPersonFilter = () => {
     isRoomPersonFilterOpen.value = !isRoomPersonFilterOpen.value
+}
+
+const togglePaymentModal = () => {
+    isPaymentOpen.value = !isPaymentOpen.value
 }
 
 const getData = async () => {
