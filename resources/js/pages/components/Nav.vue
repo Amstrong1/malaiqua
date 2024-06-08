@@ -68,16 +68,17 @@
                             Contact
                         </a>
 
-                        <div class="absolute w-1/2 left-1/2 right-1/2 z-50" v-if="isContactOpen">
-                            <div class="bg-gray-200 p-6 m-4 rounded-lg border border-gray-200 text-xs">
+                        <div class="w-full h-full fixed inset-0 flex items-center justify-center z-50" v-if="isContactOpen">
+                            <div class="bg-gray-700 opacity-80 absolute w-full h-full z-40" @click.prevent="toggleContact()"></div>
+                            <div class="bg-gray-200 p-6 m-4 rounded-lg border border-gray-200 text-xs z-50">
                                 <div class="p-6 flex">
                                     <div class="flex-1 text-center border-r border-gray-200 pr-6">
                                         <h2 class="font-semibold text-purple-700">Vous avez un projet immobilier ?
                                         </h2>
-                                        <div class="mt-4 font-bold text-purple-700">09 70 255 255</div>
+                                        <div class="mt-4 font-bold text-purple-700">+229 55 69 56 56</div>
                                         <div class="text-gray-600">APPEL NON SURTAXÉ</div>
                                         <div class="mt-2 text-gray-500">
-                                            +33 9 70 255 255 depuis l'étranger<br>
+                                            +229 55 69 56 56<br>
                                             7J/7 Lun - Vend de 8h30 à 20h<br>
                                             Sam - Dim de 10h à 18h
                                         </div>
@@ -90,17 +91,17 @@
                                     </div>
                                     <div class="flex-1 text-center pl-6">
                                         <h2 class="font-semibold text-purple-700">Vous êtes déjà client ?</h2>
-                                        <div class="mt-4 font-bold text-purple-700">09 70 259 259</div>
+                                        <div class="mt-4 font-bold text-purple-700">+229 55 69 56 56</div>
                                         <div class="text-sm text-gray-600">APPEL NON SURTAXÉ</div>
                                         <div class="mt-2 text-gray-500">
-                                            +33 9 70 259 259 depuis l'étranger<br>
+                                            +229 55 69 56 56 depuis l'étranger<br>
                                             Du lundi au vendredi de 9h30 à 12h30<br>
                                             et de 14h à 18h
                                         </div>
                                         <p class="mt-4 text-gray-500">
                                             Vous pouvez également nous écrire sur l'adresse :
-                                            <a href="mailto:service-client@cogedim.com"
-                                                class="text-purple-700 underline">service-client@cogedim.com</a>
+                                            <a href="mailto:contact@mylikeart.com"
+                                                class="text-purple-700 underline">contact@mylikeart.com</a>
                                         </p>
                                         <p class="mt-2 text-gray-500">
                                             Nos équipes sont mobilisées pour vous répondre dans les meilleurs délais.

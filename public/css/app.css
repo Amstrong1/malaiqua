@@ -546,9 +546,6 @@ video {
 .right-0 {
   right: 0px;
 }
-.top-0 {
-  top: 0px;
-}
 .z-0 {
   z-index: 0;
 }
@@ -655,18 +652,6 @@ video {
 .mt-8 {
   margin-top: 2rem;
 }
-.-mt-px {
-  margin-top: -1px;
-}
-.ml-1 {
-  margin-left: 0.25rem;
-}
-.ml-12 {
-  margin-left: 3rem;
-}
-.mr-2 {
-  margin-right: 0.5rem;
-}
 .block {
   display: block;
 }
@@ -725,9 +710,6 @@ video {
 .h-full {
   height: 100%;
 }
-.h-8 {
-  height: 2rem;
-}
 .min-h-\[auto\] {
   min-height: auto;
 }
@@ -770,17 +752,11 @@ video {
 .w-full {
   width: 100%;
 }
-.w-8 {
-  width: 2rem;
-}
 .max-w-7xl {
   max-width: 80rem;
 }
 .max-w-xl {
   max-width: 36rem;
-}
-.max-w-6xl {
-  max-width: 72rem;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -838,9 +814,6 @@ video {
 }
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
@@ -995,9 +968,6 @@ video {
 .border-t-0 {
   border-top-width: 0px;
 }
-.border-r {
-  border-right-width: 1px;
-}
 .border-solid {
   border-style: solid;
 }
@@ -1030,10 +1000,6 @@ video {
 }
 .border-transparent {
   border-color: transparent;
-}
-.border-gray-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 .bg-blue-100 {
   --tw-bg-opacity: 1;
@@ -1218,9 +1184,6 @@ video {
 .pt-6 {
   padding-top: 1.5rem;
 }
-.pt-8 {
-  padding-top: 2rem;
-}
 .text-left {
   text-align: left;
 }
@@ -1283,17 +1246,11 @@ video {
 .leading-tight {
   line-height: 1.25;
 }
-.leading-7 {
-  line-height: 1.75rem;
-}
 .tracking-wide {
   letter-spacing: 0.025em;
 }
 .tracking-widest {
   letter-spacing: 0.1em;
-}
-.tracking-wider {
-  letter-spacing: 0.05em;
 }
 .text-blue-500 {
   --tw-text-opacity: 1;
@@ -1366,10 +1323,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-.text-gray-200 {
-  --tw-text-opacity: 1;
-  color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 .underline {
   text-decoration-line: underline;
@@ -1819,10 +1772,6 @@ video {
     align-items: center;
   }
 
-  .sm\:justify-start {
-    justify-content: flex-start;
-  }
-
   .sm\:justify-center {
     justify-content: center;
   }
@@ -1951,11 +1900,6 @@ video {
   .dark\:bg-gray-800 {
     --tw-bg-opacity: 1;
     background-color: rgb(31 41 55 / var(--tw-bg-opacity));
-  }
-
-  .dark\:bg-gray-900 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(17 24 39 / var(--tw-bg-opacity));
   }
 
   .dark\:text-gray-300 {
