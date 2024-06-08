@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FAQController;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ProfileController;
@@ -35,7 +36,35 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+Route::get('/migrate', function () {
+    Artisan::call('migrate');
+    dd('migrated!');
+});
+
+Route::get('/migrate-seed', function () {
+    Artisan::call('migrate:fresh --seed');
+    dd('migrated & seed!');
+});
+
+Route::get('/seed', function () {
+    Artisan::call('db:seed');
+    dd('seed!');
+});
+
+Route::get('/migrate-fresh', function () {
+    Artisan::call('migrate:fresh');
+    dd('migrated & fresh!!');
+});
+
+Route::get('/reboot', function () {
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    dd('All done!');
+});
 
 Route::get('/{any}', function () {
     return view('welcome');

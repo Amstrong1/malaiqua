@@ -92,6 +92,7 @@ class ReservationController extends Controller
             'name' => 'Nom',
             'email' => 'Email',
             'contact' => 'Contact',
+            'status_label' => 'Statut',
         );
         return $columns;
     }
@@ -107,11 +108,11 @@ class ReservationController extends Controller
     private function reservation_fields()
     {
         $status = [
-            "En cours" => ReservationStatusEnum::Pending,
-            "Confirmé" => ReservationStatusEnum::Confirmed,
-            "Annulé" => ReservationStatusEnum::Canceled,
-            "Rejeté" => ReservationStatusEnum::Rejected,
-            "Terminé" => ReservationStatusEnum::Finished,
+            ReservationStatusEnum::PENDING['value'] => ReservationStatusEnum::PENDING['label'],
+            ReservationStatusEnum::CONFIRMED['value'] => ReservationStatusEnum::CONFIRMED['label'],
+            ReservationStatusEnum::CANCELED['value'] => ReservationStatusEnum::CANCELED['label'],
+            ReservationStatusEnum::REJECTED['value'] => ReservationStatusEnum::REJECTED['label'],
+            ReservationStatusEnum::FINISHED['value'] => ReservationStatusEnum::FINISHED['label'],
         ];
 
         $fields = [

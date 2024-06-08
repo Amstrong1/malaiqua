@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\FAQ;
+use App\Models\Room;
+use App\Models\Condition;
 use App\Models\Equipment;
 use App\Models\Structure;
 use App\Models\Testimony;
-use App\Models\Condition;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -143,5 +145,33 @@ class AppController extends Controller
             'conditions' => Condition::all(),
             'faqs' => FAQ::limit(8)->get(),
         ]);
+    }
+
+    public function storeReservation(Request $request)
+    {
+        $room = Room::find($request->id);
+        $structure = Structure::find($room->structure_id);
+
+        $reservation = new Reservation();
+        $reservation->structure_id = $structure->id;
+        $reservation->room_id = $request->id;
+        $reservation->rooms = $request->rooms;
+        $reservation->person = $request->guests;
+        $reservation->price = $room->price;
+        $reservation->start_date = $request->checkInDate;
+        $reservation->end_date = $request->checkOutDate;
+        $reservation->name = $request->firstname . " " . $request->name;
+        $reservation->email = $request->email;
+        $reservation->contact = $request->contact;
+
+        if ($reservation->save()) {
+            return response()->json([
+                'success' => 'Success'
+            ]);
+        } else {
+            return response()->json([
+                'success' => 'Failed'
+            ]);
+        }
     }
 }

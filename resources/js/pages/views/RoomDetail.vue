@@ -90,7 +90,7 @@
                         <div class="border rounded p-2 w-full flex justify-between"
                             @click.prevent="toggleRoomPersonFilter()">
                             <div>
-                                {{ guests }} personne(s) - {{ structures }} chambre(s)
+                                {{ guests }} personne(s) - {{ rooms }} chambre(s)
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-5 h-5">
@@ -157,8 +157,9 @@
                             <span class="text-red-600 text-xl font-bold">{{ room.price }} € </span>
                             <span class="text-xs font-semibold">/ tarif journalier</span>
                         </div>
-                        <button class="my-2 w-full bg-blue-500 text-white px-4 py-2 rounded"
-                            @click.prevent="togglePaymentModal()">Réserver</button>
+                        <router-link :to="{ name: 'create-reservation', params: { id: room.id } }">
+                            <button class="my-2 w-full bg-blue-500 text-white px-4 py-2 rounded">Réserver</button>
+                        </router-link>
                     </div>
                     <div class="w-full h-full fixed inset-0 flex items-center justify-center z-50" v-if="isPaymentOpen">
                         <div class="bg-gray-700 opacity-80 absolute w-full h-full z-40"></div>
@@ -247,10 +248,10 @@ let req = route.params.id
 let checkInDate = localStorage.getItem('checkInDate')
 let checkOutDate = localStorage.getItem('checkOutDate')
 let guests = localStorage.getItem('guests')
-let structures = localStorage.getItem('structures')
+let rooms = localStorage.getItem('rooms')
 
-const structure = ref([])
 const faqs = ref([])
+const structure = ref([])
 const conditions = ref([])
 
 // carousel

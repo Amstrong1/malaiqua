@@ -12,3 +12,4 @@ Route::get('/app', [AppController::class, 'index']);
 Route::get('/faqs', [AppController::class, 'faqs']);
 Route::post('/structure', [AppController::class, 'search']);
 Route::get('/room-detail/{id}', [AppController::class, 'roomDetail']);
+Route::post('/reservation-store', [AppController::class, 'storeReservation']);
